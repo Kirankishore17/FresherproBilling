@@ -1,37 +1,41 @@
 package com.kk.fresherpro.GstBillingApp;
 
-public class Product {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private int id;
+@Entity
+@Table(name="products")
+public class Product {
 	
-	private String code;
-	
+	@Id
+	@Column(name="productcode")
+	private Integer code;
+
+	@Column(name="productname")	
 	private String name;
 	
-	private double price;
+	@Column(name="productprice")
+	private Double price;
 	
-	private double gst;
+	@Column(name="productgst")
+	private Double gst;
 
 	public Product() {
 		
 	}
-	public Product(int id, String code, String name, double price, double gst) {
-		this.id = id;
+	public Product(Integer code, String name, Double price, Double gst) {
 		this.code = code;
 		this.name = name;
 		this.price = price;
 		this.gst = gst;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getCode() {
+	
+	public Integer getCode() {
 		return code;
 	}
-	public void setCode(String code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 	public String getName() {
@@ -40,16 +44,16 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public double getGst() {
+	public Double getGst() {
 		return gst;
 	}
-	public void setGst(double gst) {
+	public void setGst(Double gst) {
 		this.gst = gst;
 	}
 	

@@ -2,46 +2,55 @@
 <html>
 <head>
 	<title>Product Entry</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<style>
+	a{
+	color:white;
+	text-decoration:none;
+	}
+	form{
+	padding:0;
+	margin:0;
+	}
+	</style>	
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Home</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/entry"><span class="glyphicon glyphicon-user"></span>Product Entry</a></li>
-      <li><a href="/bill"><span class="glyphicon glyphicon-log-in"></span>Billing</a></li>
+    <ul class="nav navbar-right ">
+      <li class="navbar-brand mt-2"><a href="/entry">Product Entry</a> </li>
+      <li class="navbar-brand mt-2"><a href="/bill"> Billing</a></li>
     </ul>
   </div>
 </nav>
-
+<br><br><br>
 <div class="container">
 
 	<h3>Products:</h3>
 	<table class="table table-hover">
-	<tr>
+	<tr class="thead-light">
 		<th>Code</th>
 		<th>Name</th>
 		<th>Price</th>
 		<th>GST (in %)</th>
+		<th>Action</th>
 	</tr>
 	<c:forEach var="product" items="${list}">
-		<tr>
+		<tr class="rowheight">
 		<td>${product.code}</td>
 		<td>${product.name}</td>
 		<td>${product.price}</td>
 		<td>${product.gst}</td>
+		<td><form action="delete/${product.code}" method="POST"><input type="submit" class="btn btn-secondary btn-sm" value="Delete"></form></td>
 		</tr>
 	</c:forEach>	
 	</table>
-	<br>
 	<hr>
-	<br>
 	</div>
 
 </body>
