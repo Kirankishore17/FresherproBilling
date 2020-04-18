@@ -31,8 +31,9 @@
 <br><br><br>
 <div class="container">
 
-	<h3>Products:</h3>
-	<table class="table table-hover">
+	<h3>All Products Available:</h3>
+	<table class="table table-hover tableheight">
+	
 	<tr class="thead-light">
 		<th>Code</th>
 		<th>Name</th>
@@ -40,7 +41,9 @@
 		<th>GST (in %)</th>
 		<th>Action</th>
 	</tr>
-	<c:forEach var="product" items="${list}">
+	<tbody>
+	
+	<c:forEach var="product" items="${list}" >
 		<tr class="rowheight">
 		<td>${product.code}</td>
 		<td>${product.name}</td>
@@ -49,8 +52,11 @@
 		<td><form action="delete/${product.code}" method="POST"><input type="submit" class="btn btn-secondary btn-sm" value="Delete"></form></td>
 		</tr>
 	</c:forEach>	
+	
+	</tbody>	
 	</table>
 	<hr>
+	
 	</div>
 
 </body>

@@ -1,6 +1,5 @@
 package com.kk.fresherpro.GstBillingApp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,22 @@ public class ProductDAO {
 
 	public void deleteById(int id) {
 		repo.deleteById(id);
+	}
+
+	public Product searchByName(String name) {
+		for(Product product:repo.findAll()) 
+			if(name.equals(product.getName())) {
+					return product;
+			}
+		return 	null;
+	}
+
+	public Product searchById(Integer id) {
+		for(Product product:repo.findAll()) 
+			if(id.equals(product.getCode())) {
+					return product;
+			}		
+		return null;
 	}
 
 }
