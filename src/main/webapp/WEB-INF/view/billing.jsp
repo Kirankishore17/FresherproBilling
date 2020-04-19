@@ -27,7 +27,7 @@
 	</nav>
 	<br><br><br>
 	<div class="container">
-		<div class="alert alert-info">No charges 100% OFF (Corona offer)</div>
+		<div class="alert alert-info">CORONA OFFER: Free Home Delivery </div>
 		
 		<form action="addtobillId" method="post">
 		  <div class="form-row">
@@ -80,7 +80,7 @@
 		<form action="clear" method="post">
 		      <input type="submit" class="btn btn-primary btn-sm" value="Reset">		
 		</form>
-		
+		<br>
 		<div class="container">
 			<h4>Total: <c:out value="${total}"/></h4>
 		</div>
