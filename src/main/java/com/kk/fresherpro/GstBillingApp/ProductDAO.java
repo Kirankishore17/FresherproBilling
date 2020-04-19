@@ -12,7 +12,7 @@ public class ProductDAO {
 	ProductRepo repo;
 	
 	public List<Product> findAll(){
-		System.out.println("\n\nReturns full list");
+		// System.out.println("\n\nReturns full list");
 		/*
 		List<Product> productList = new ArrayList<Product>() {{
 		add(new Product(1,"kk",200.0,10.0));
@@ -20,15 +20,13 @@ public class ProductDAO {
 		}};
 		*/
 		List<Product> productList = repo.findAll();
-		System.out.print(productList);
-		
-		
+		// System.out.print(productList);		
 		return 	productList;
 	}
 	
 	public void addProduct(Product product) {
 		repo.save(product);
-		System.out.println("\n\nSaves: " + product);
+		// System.out.println("\n\nSaves: " + product);
 	}
 
 	public void deleteById(int id) {

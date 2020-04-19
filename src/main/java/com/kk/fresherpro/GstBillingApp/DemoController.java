@@ -55,7 +55,7 @@ public class DemoController {
 
 		}
 
-		System.out.println("\n\n\n" + product.getName() + " ---- " + total);
+		// System.out.println("\n\n\n" + product.getName() + " ---- " + total);
 		return "redirect:/bill";
 	}
 	
@@ -72,7 +72,7 @@ public class DemoController {
 			return "redirect:/";
 
 		}
-		System.out.println("\n\n\n" + product.getName() + " ---- " + total);
+		// System.out.println("\n\n\n" + product.getName() + " ---- " + total);
 		return "redirect:/bill";
 	}
 	
