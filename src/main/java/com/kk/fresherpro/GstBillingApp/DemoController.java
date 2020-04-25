@@ -85,6 +85,7 @@ public class DemoController {
 	@PostMapping("/clear")
 	public String resetBillList() {
 		billList.clear();
+		total = 0.0;
 		return "redirect:/bill";
 	}
 	
