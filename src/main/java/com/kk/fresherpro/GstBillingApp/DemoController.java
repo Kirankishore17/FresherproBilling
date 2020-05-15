@@ -61,6 +61,7 @@ public class DemoController {
 	
 	@PostMapping("/addtobillName")
 	public String billingPageSearchByName(@RequestParam("name") String name, @RequestParam("qty") Integer qty) {
+		name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
 		Product product = dao.searchByName(name);
 		if(product != null) {
 			BillProduct billProduct = new BillProduct(product);
@@ -101,6 +102,8 @@ public class DemoController {
 	
 	@RequestMapping(value="/formSubmit")
 	public String newEntry(@ModelAttribute("product") Product product) {
+		String name  = product.getName(); 
+		product.setName(name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase());
 		dao.addProduct(product);
 		return "redirect:/";
 	}

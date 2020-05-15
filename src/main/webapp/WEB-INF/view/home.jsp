@@ -38,7 +38,7 @@
 		<th>Code</th>
 		<th>Name</th>
 		<th>Price</th>
-		<th>GST (in %)</th>
+		<th>GST</th>
 		<th>Action</th>
 	</tr>
 	<tbody>
@@ -47,8 +47,8 @@
 		<tr class="rowheight">
 		<td>${product.code}</td>
 		<td>${product.name}</td>
-		<td>${product.price}</td>
-		<td>${product.gst}</td>
+		<td>Rs. ${product.price}</td>
+		<td>${product.gst} %</td>
 		<td><form action="delete/${product.code}" method="POST"><input type="submit" class="btn btn-secondary btn-sm" value="Delete"></form></td>
 		</tr>
 	</c:forEach>	

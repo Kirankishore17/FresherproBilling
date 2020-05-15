@@ -6,10 +6,15 @@
 	<style>
 	a{
 	color:white;
-	text-decoration:none;}
+	text-decoration:none;
+	}
 	.qty{
 	padding:0;
-	margin:0;}
+	margin:0;
+	}
+	.total {
+	margin-bottom:2rem;
+	}
 	</style>
 </head>
 <body>
@@ -60,9 +65,9 @@
 		<table class="table table-hover">
 		<tr class="thead-light">
 			<th>Code</th>
-			<th>Name</th>
+			<th> Name </th>
 			<th>Price</th>
-			<th>GST (in %)</th>
+			<th>GST</th>
 			<th>Quantity</th>
 			<th>Amount</th>
 		</tr>
@@ -70,10 +75,10 @@
 			<tr class="rowheight">
 			<td>${product.code}</td>
 			<td>${product.name}</td>
-			<td>${product.price}</td>
-			<td>${product.gst}</td>
+			<td>Rs. ${product.price}</td>
+			<td>${product.gst} %</td>
 			<td>${product.qty}</td>
-			<td>${product.amount}</td>
+			<td>Rs. ${product.amount}</td>
 			</tr>
 		</c:forEach>	
 		</table>
@@ -81,8 +86,8 @@
 		      <input type="submit" class="btn btn-primary btn-sm" value="Reset">		
 		</form>
 		<br>
-		<div class="container">
-			<h4>Total: <c:out value="${total}"/></h4>
+		<div class="container total">
+			<h4>Total: Rs. <c:out value="${total}"/></h4>
 		</div>
 	</div>
 </body>
