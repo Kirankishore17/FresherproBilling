@@ -1,12 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-	<title>Product Entry</title>
+	<title>Fresherpro Billing App</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 	<style>
 	a{
 	color:white;
 	text-decoration:none;
+	}
+	a:hover {
+	color:white;
 	}
 	form{
 	padding:0;
@@ -39,6 +42,7 @@
 		<th>Name</th>
 		<th>Price</th>
 		<th>GST</th>
+		<th>Modify</th>
 		<th>Action</th>
 	</tr>
 	<tbody>
@@ -49,6 +53,7 @@
 		<td>${product.name}</td>
 		<td>Rs. ${product.price}</td>
 		<td>${product.gst} %</td>
+		<td><form action="update/${product.code}" method="POST"><input type="submit" class="btn btn-primary btn-sm" value="Update"></form></td>
 		<td><form action="delete/${product.code}" method="POST"><input type="submit" class="btn btn-secondary btn-sm" value="Delete"></form></td>
 		</tr>
 	</c:forEach>	

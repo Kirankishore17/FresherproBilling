@@ -1,12 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-	<title>Product Entry</title>
+	<title>Fresherpro Billing App</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<style>
 	a{
 	color:white;
 	text-decoration:none;
+	}
+	a:hover {
+	color:white;
 	}
 	.qty{
 	padding:0;

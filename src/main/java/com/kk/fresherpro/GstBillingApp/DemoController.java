@@ -46,6 +46,22 @@ public class DemoController {
 		Product product = dao.searchById(id);
 		if(product != null) {
 			BillProduct billProduct = new BillProduct(product);
+			
+			int index=-1;
+			for(int i = 0; i< billList.size(); i++) {
+				BillProduct temp = billList.get(i);
+				if(temp.getCode().equals(product.getCode())) {
+					index = i;
+					break;
+				}
+			}
+			if(index != -1) {
+				BillProduct temp = billList.get(index);
+				qty = qty + temp.getQty();
+				total = total - temp.getAmount();
+				billList.remove(index);		
+			}
+			
 			billProduct.setAmount(product.getPrice() * qty * (100 + product.getGst()) / 100);
 			billProduct.setQty(qty);
 			total = total + billProduct.getAmount();
@@ -54,8 +70,6 @@ public class DemoController {
 			return "redirect:/";
 
 		}
-
-		// System.out.println("\n\n\n" + product.getName() + " ---- " + total);
 		return "redirect:/bill";
 	}
 	
@@ -65,15 +79,28 @@ public class DemoController {
 		Product product = dao.searchByName(name);
 		if(product != null) {
 			BillProduct billProduct = new BillProduct(product);
+			int index=-1;
+			for(int i = 0; i< billList.size(); i++) {
+				BillProduct temp = billList.get(i);
+				if(temp.getCode().equals(product.getCode())) {
+					index = i;
+					break;
+				}
+			}
+			if(index != -1) {
+				BillProduct temp = billList.get(index);
+				qty = qty + temp.getQty();
+				total = total - temp.getAmount();
+				billList.remove(index);		
+			}
 			billProduct.setAmount(product.getPrice() * qty * (100 + product.getGst()) / 100);
 			billProduct.setQty(qty);
-			total = total + billProduct.getAmount();
+			total = total + billProduct.getAmount();		
 			billList.add(billProduct);
 		}else {
 			return "redirect:/";
 
 		}
-		// System.out.println("\n\n\n" + product.getName() + " ---- " + total);
 		return "redirect:/bill";
 	}
 	
@@ -82,6 +109,7 @@ public class DemoController {
 		dao.deleteById(id);
 		return "redirect:/";
 	}
+	
 	
 	@PostMapping("/clear")
 	public String resetBillList() {
@@ -100,11 +128,40 @@ public class DemoController {
 		return new Product();
 	}
 	
+	
 	@RequestMapping(value="/formSubmit")
-	public String newEntry(@ModelAttribute("product") Product product) {
+	public String newEntry(@ModelAttribute("product") Product product) {		
 		String name  = product.getName(); 
 		product.setName(name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase());
+		if(dao.checkId(product.getCode())) {
+			return "redirect:/error";
+		}
 		dao.addProduct(product);
 		return "redirect:/";
 	}
+	
+	@PostMapping("/update/{id}")
+	public String updateProduct(@PathVariable("id") int id, Model model) {
+		Product product = dao.searchById(id);
+		model.addAttribute("code", product.getCode());
+		model.addAttribute("name", product.getName());
+		model.addAttribute("gst", product.getGst());
+		model.addAttribute("price", product.getPrice());
+		
+		return "update";
+	}
+
+	@PostMapping(value="/update/product")
+	public String updateProduct(@RequestParam("code") Integer code, @RequestParam("name") String name,
+								@RequestParam("gst") Double gst, @RequestParam("price") Double price) {
+		Product product = dao.searchById(code);
+		try {
+		product.setGst(gst);
+		product.setPrice(price);
+		product.setName(name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase());
+		}catch(Exception e) {
+			return "redirect:/error";
+		}
+		dao.addProduct(product);
+		return "redirect:/";	}
 }

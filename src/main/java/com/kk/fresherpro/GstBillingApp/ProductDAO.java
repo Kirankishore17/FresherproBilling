@@ -20,13 +20,11 @@ public class ProductDAO {
 		}};
 		*/
 		List<Product> productList = repo.findAll();
-		// System.out.print(productList);		
 		return 	productList;
 	}
 	
 	public void addProduct(Product product) {
 		repo.save(product);
-		// System.out.println("\n\nSaves: " + product);
 	}
 
 	public void deleteById(int id) {
@@ -47,6 +45,10 @@ public class ProductDAO {
 					return product;
 			}		
 		return null;
+	}
+
+	public boolean checkId(Integer code) {
+		return repo.existsById(code);
 	}
 
 }
